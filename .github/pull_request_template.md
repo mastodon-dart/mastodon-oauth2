@@ -33,7 +33,7 @@ Indicate which of these issues are resolved or fixed by this PR, i.e. Fixes #xxx
 
 <!-- Links -->
 
-[issue database]: https://github.com/mastodon-dart/mastodon-oauth2-pkce/issues
-[contributor guide]: https://github.com/mastodon-dart/mastodon-oauth2-pkce/blob/main/CONTRIBUTING.md
-[style guide]: https://github.com/mastodon-dart/mastodon-oauth2-pkce/blob/main/STYLEGUIDE.md
+[issue database]: https://github.com/mastodon-dart/mastodon-oauth2/issues
+[contributor guide]: https://github.com/mastodon-dart/mastodon-oauth2/blob/main/CONTRIBUTING.md
+[style guide]: https://github.com/mastodon-dart/mastodon-oauth2/blob/main/STYLEGUIDE.md
 [conventional commit]: https://conventionalcommits.org
