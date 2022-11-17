@@ -9,12 +9,12 @@
 
 <!-- /TOC -->
 
-This document outlines security procedures and general policies for the `mastodon_oauth2_pkce` project created by `Kato Shinya`.
+This document outlines security procedures and general policies for the `mastodon_oauth2` project created by `Kato Shinya`.
 
 ## 1.1. Reporting a Bug
 
-The team and community take all security bugs in `mastodon_oauth2_pkce` seriously.
-Thank you for improving the security of `mastodon_oauth2_pkce`. We appreciate your efforts and
+The team and community take all security bugs in `mastodon_oauth2` seriously.
+Thank you for improving the security of `mastodon_oauth2`. We appreciate your efforts and
 responsible disclosure and will make every effort to acknowledge your
 contributions.
 
