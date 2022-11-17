@@ -1,0 +1,23 @@
+name: Analyzer
+
+on:
+  push:
+    # staging and trying branches are for Bors config
+    branches: [ main, staging, trying ]
+  pull_request:
+    # staging and trying branches are for Bors config
+    branches: [ main, staging, trying ]
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  analyze:
+    name: analyzer
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: subosito/flutter-action@v2.8.0
+    - name: install dependencies
+      run: flutter pub get
+    - name: analyzer
+      run: flutter analyze --fatal-infos --fatal-warnings ./lib
