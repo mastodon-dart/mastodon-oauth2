@@ -1,5 +1,5 @@
 name: mastodon_oauth2
-description: Provides the optimized and easiest way to integrate OAuth 2.0 PKCE with Mastodon API in Flutter.
+description: Provides the optimized and easiest way to integrate OAuth 2.0 with Mastodon API in Flutter.
 version: 0.0.1
 repository: https://github.com/mastodon-dart/mastodon-oauth2
 issue_tracker: 'https://github.com/mastodon-dart/mastodon-oauth2/issues'
