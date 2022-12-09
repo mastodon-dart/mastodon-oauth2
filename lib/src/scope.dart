@@ -10,7 +10,10 @@ enum Scope {
   write('write'),
 
   /// Allows changes to account connections.
-  follow('follow');
+  follow('follow'),
+
+  /// Allows changes to web push notifications.
+  push('push');
 
   /// The scope value
   final String value;

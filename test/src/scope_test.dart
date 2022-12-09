@@ -10,11 +10,13 @@ void main() {
     expect(Scope.read.name, 'read');
     expect(Scope.write.name, 'write');
     expect(Scope.follow.name, 'follow');
+    expect(Scope.push.name, 'push');
   });
 
   test('.value', () {
     expect(Scope.read.value, 'read');
     expect(Scope.write.value, 'write');
     expect(Scope.follow.value, 'follow');
+    expect(Scope.push.value, 'push');
   });
 }
