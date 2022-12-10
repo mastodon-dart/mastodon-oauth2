@@ -28,6 +28,17 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "abraham",
+      "name": "Abraham Williams",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3341?v=4",
+      "profile": "http://abrah.am",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 5,
