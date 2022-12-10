@@ -2,10 +2,8 @@
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided the conditions.
 
-import 'package:example/src/mastodon_oauth2_client.dart';
 import 'package:flutter/material.dart';
-
-import 'src/scope.dart';
+import 'package:mastodon_oauth2/mastodon_oauth2.dart';
 
 void main() {
   runApp(const MaterialApp(home: Example()));
