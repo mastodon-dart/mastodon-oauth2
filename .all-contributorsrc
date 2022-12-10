@@ -4,7 +4,23 @@
   ],
   "imageSize": 100,
   "commit": false,
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "myConsciousness",
+      "name": "Shinya Kato / 加藤 真也",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13072231?v=4",
+      "profile": "http://shinyakato.dev",
+      "contributions": [
+        "code",
+        "doc",
+        "design",
+        "example",
+        "maintenance",
+        "test",
+        "tutorial"
+      ]
+    }
+  ],
   "contributorsPerLine": 5,
   "projectName": "mastodon-oauth2",
   "projectOwner": "mastodon-dart",
