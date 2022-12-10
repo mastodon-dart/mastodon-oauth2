@@ -208,6 +208,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="http://shinyakato.dev"><img src="https://avatars.githubusercontent.com/u/13072231?v=4?s=100" width="100px;" alt="Shinya Kato / 加藤 真也"/><br /><sub><b>Shinya Kato / 加藤 真也</b></sub></a><br /><a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=myConsciousness" title="Code">💻</a> <a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=myConsciousness" title="Documentation">📖</a> <a href="#design-myConsciousness" title="Design">🎨</a> <a href="#example-myConsciousness" title="Examples">💡</a> <a href="#maintenance-myConsciousness" title="Maintenance">🚧</a> <a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=myConsciousness" title="Tests">⚠️</a> <a href="#tutorial-myConsciousness" title="Tutorials">✅</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
