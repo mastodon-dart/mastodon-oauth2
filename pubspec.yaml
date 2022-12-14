@@ -1,12 +1,12 @@
 name: mastodon_oauth2
 description: Provides the optimized and easiest way to integrate OAuth 2.0 with Mastodon API in Flutter.
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/mastodon-dart/mastodon-oauth2
-issue_tracker: 'https://github.com/mastodon-dart/mastodon-oauth2/issues'
-homepage: 'https://github.com/mastodon-dart'
+issue_tracker: "https://github.com/mastodon-dart/mastodon-oauth2/issues"
+homepage: "https://github.com/mastodon-dart"
 
 environment:
-  sdk: '>=2.17.0 <3.0.0'
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   flutter:
