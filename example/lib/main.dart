@@ -38,7 +38,10 @@ class _ExampleState extends State<Example> {
                   );
 
                   final response = await oauth2.executeAuthCodeFlow(
-                    scopes: Scope.values,
+                    scopes: [
+                      Scope.read,
+                      Scope.write,
+                    ],
                   );
 
                   super.setState(() {
