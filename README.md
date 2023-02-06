@@ -68,16 +68,6 @@ import 'package:mastodon_oauth2/mastodon_oauth2.dart';
 
 ### 1.1.3. Setup
 
-At first to test with this library, let's set `org.example.android.oauth://callback/` as a callback URI in your `developer page`.
-
-You can see `developer page` of mastodon in the link like below.
-
-- `https://mastodon.instance/settings/applications`
-
-And then, specify your `redirect uri` like below.
-
-![Set Callback URI](https://user-images.githubusercontent.com/13072231/202414635-ed28fc1b-1874-413f-8d77-8376771f1b09.png)
-
 #### 1.1.3.1. Android
 
 On Android you must first set the minSdkVersion in the ***build.gradle*** file:
@@ -89,6 +79,16 @@ defaultConfig {
    ...
 ```
 
+Then, to test with this library, let's set `org.example.oauth://callback/` as a callback URI in your `developer page`.
+
+You can see `developer page` of mastodon in the link like below.
+
+- https://mastodon.instance/settings/applications
+
+And then, specify your `redirect uri` like below.
+
+![Set Callback URI](https://user-images.githubusercontent.com/13072231/216985941-5b4f8f3f-03c9-4807-b961-070b9f4f2b65.png)
+
 Also it's necessary to add the following definitions to `AndroidManifest.xml`.
 
 ```xml
@@ -97,7 +97,7 @@ Also it's necessary to add the following definitions to `AndroidManifest.xml`.
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="org.example.android.oauth" android:host="callback" />
+        <data android:scheme="org.example.oauth" android:host="callback" />
     </intent-filter>
 </activity>
 ```
@@ -110,8 +110,8 @@ final oauth2 = MastodonOAuth2Client(
   instance: 'MASTODON_INSTANCE'
   clientId: 'YOUR_CLIENT_ID',
   clientSecret: 'YOUR_CLIENT_SECRET',
-  redirectUri: 'org.example.android.oauth://callback/',
-  customUriScheme: 'org.example.android.oauth',
+  redirectUri: 'org.example.oauth://callback/',
+  customUriScheme: 'org.example.oauth',
 );
 ```
 
@@ -124,6 +124,8 @@ On iOS you need to set the platform in the ***ios/Podfile*** file:
 ```profile
 platform :ios, '11.0'
 ```
+
+The usage of `MastodonOAuth2Client` is the same as for Android above.
 
 #### 1.1.3.3. Web
 
@@ -208,8 +210,8 @@ class _ExampleState extends State<Example> {
                     clientSecret: 'YOUR_CLIENT_SECRET',
 
                     // Replace redirect url as you need.
-                    redirectUri: 'org.example.android.oauth://callback/',
-                    customUriScheme: 'org.example.android.oauth',
+                    redirectUri: 'org.example.oauth://callback/',
+                    customUriScheme: 'org.example.oauth',
                   );
 
                   final response = await oauth2.executeAuthCodeFlow(

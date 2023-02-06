@@ -33,8 +33,8 @@ class _ExampleState extends State<Example> {
                     instance: 'MASTODON_INSTANCE',
                     clientId: 'YOUR_CLIENT_ID',
                     clientSecret: 'YOUR_CLIENT_SECRET',
-                    redirectUri: 'org.example.android.oauth://callback/',
-                    customUriScheme: 'org.example.android.oauth',
+                    redirectUri: 'org.example.oauth://callback/',
+                    customUriScheme: 'org.example.oauth',
                   );
 
                   final response = await oauth2.executeAuthCodeFlow(
