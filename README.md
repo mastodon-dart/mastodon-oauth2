@@ -102,6 +102,19 @@ Also it's necessary to add the following definitions to `AndroidManifest.xml`.
 </activity>
 ```
 
+Finally you need to set this redirect url for `MastodonOAuth2Client`.
+
+```dart
+final oauth2 = MastodonOAuth2Client(
+  // Specify mastodon instance like "mastodon.social"
+  instance: 'MASTODON_INSTANCE'
+  clientId: 'YOUR_CLIENT_ID',
+  clientSecret: 'YOUR_CLIENT_SECRET',
+  redirectUri: 'org.example.android.oauth://callback/',
+  customUriScheme: 'org.example.android.oauth',
+);
+```
+
 You can see details [here](https://github.com/mastodon-dart/mastodon-oauth2/blob/main/example/android/app/src/main/AndroidManifest.xml).
 
 #### 1.1.3.2. iOS
@@ -116,11 +129,45 @@ platform :ios, '11.0'
 
 For Web, the implementation method for using this package is the same as for `Android` and `iOS` above, but it's necessary to separately create HTML for the destination to be redirected to after authentication.
 
-Detailed instructions can be found in the [`README of the flutter_web_auth_2`](https://pub.dev/packages/flutter_web_auth_2#web) package.
+First, you will need to create the following HTML directly under your `web` folder in preparation for OAuth authentication in your web browser. Then, let's save this HTML file with the name `auth.html`.
+
+```html
+<!DOCTYPE html>
+<title>Authentication complete</title>
+<p>
+  Authentication is complete. If this does not happen automatically, please
+  close the window.
+  <script>
+    window.opener.postMessage(window.location.href, window.location.origin);
+    window.close();
+  </script>
+</p>
+```
+
+And now your `web` folder should look like [this](https://github.com/mastodon-dart/mastodon-oauth2/tree/main/example/web).
+
+![Set auth.html](https://user-images.githubusercontent.com/13072231/216907094-56a44873-c7fb-435b-bac7-060fa34c6ed0.png)
+
+And then, unlike Android and iOS, the redirect URL should refer to this created `auth.html`. So, now let's set it to `http://localhost:5555/auth.html` for example.
+
+![Set redirect uri for Web](https://user-images.githubusercontent.com/13072231/216907843-12132c37-dde0-403f-8d58-27d0dc134a8c.png)
+
+Finally, you need to set this redirect url for `MastodonOAuth2Client`.
+
+```dart
+final oauth2 = MastodonOAuth2Client(
+  // Specify mastodon instance like "mastodon.social"
+  instance: 'MASTODON_INSTANCE'
+  clientId: 'YOUR_CLIENT_ID',
+  clientSecret: 'YOUR_CLIENT_SECRET',
+  redirectUri: 'http://localhost:5555/auth.html',
+  customUriScheme: 'http://localhost:5555/auth.html',
+);
+```
 
 ### 1.1.4. Implementation
 
-Now all that's left is to launch the following example Flutter app and press the button to start the approval process with **OAuth 2.0**!
+Now all that's left is to launch the following example Flutter app and press the button to start the authentication process with **OAuth 2.0**!
 
 After pressing the `Authorize` button, a redirect will be performed and you will see that you have obtained your `bearer token`.
 
@@ -155,16 +202,21 @@ class _ExampleState extends State<Example> {
               ElevatedButton(
                 onPressed: () async {
                   final oauth2 = MastodonOAuth2Client(
-                    // Specify mastodon instance like "example.mastodon.com"
+                    // Specify mastodon instance like "mastodon.social"
                     instance: 'MASTODON_INSTANCE'
                     clientId: 'YOUR_CLIENT_ID',
                     clientSecret: 'YOUR_CLIENT_SECRET',
+
+                    // Replace redirect url as you need.
                     redirectUri: 'org.example.android.oauth://callback/',
                     customUriScheme: 'org.example.android.oauth',
                   );
 
                   final response = await oauth2.executeAuthCodeFlow(
-                    scopes: Scope.values,
+                    scopes: [
+                      Scope.read,
+                      Scope.write,
+                    ],
                   );
 
                   super.setState(() {
@@ -211,10 +263,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="20%"><a href="http://shinyakato.dev"><img src="https://avatars.githubusercontent.com/u/13072231?v=4?s=100" width="100px;" alt="Shinya Kato / 加藤 真也"/><br /><sub><b>Shinya Kato / 加藤 真也</b></sub></a><br /><a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=myConsciousness" title="Code">💻</a> <a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=myConsciousness" title="Documentation">📖</a> <a href="#design-myConsciousness" title="Design">🎨</a> <a href="#example-myConsciousness" title="Examples">💡</a> <a href="#maintenance-myConsciousness" title="Maintenance">🚧</a> <a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=myConsciousness" title="Tests">⚠️</a> <a href="#tutorial-myConsciousness" title="Tutorials">✅</a></td>
-      <td align="center" valign="top" width="20%"><a href="http://markos.dev"><img src="https://avatars.githubusercontent.com/u/6950843?v=4?s=100" width="100px;" alt="Mark O'Sullivan"/><br /><sub><b>Mark O'Sullivan</b></sub></a><br /><a href="#ideas-MarkOSullivan94" title="Ideas, Planning, & Feedback">🤔</a></td>
-      <td align="center" valign="top" width="20%"><a href="http://abrah.am"><img src="https://avatars.githubusercontent.com/u/3341?v=4?s=100" width="100px;" alt="Abraham Williams"/><br /><sub><b>Abraham Williams</b></sub></a><br /><a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=abraham" title="Code">💻</a> <a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=abraham" title="Documentation">📖</a> <a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=abraham" title="Tests">⚠️</a></td>
-      <td align="center" valign="top" width="20%"><a href="https://github.com/SkywaveTM"><img src="https://avatars.githubusercontent.com/u/4926340?v=4?s=100" width="100px;" alt="YeongJun"/><br /><sub><b>YeongJun</b></sub></a><br /><a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=SkywaveTM" title="Documentation">📖</a> <a href="#ideas-SkywaveTM" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="http://shinyakato.dev"><img src="https://avatars.githubusercontent.com/u/13072231?v=4?s=100" width="100px;" alt="Shinya Kato / 加藤 真也"/><br /><sub><b>Shinya Kato / 加藤 真也</b></sub></a><br /><a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=myConsciousness" title="Code">💻</a> <a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=myConsciousness" title="Documentation">📖</a> <a href="#design-myConsciousness" title="Design">🎨</a> <a href="#example-myConsciousness" title="Examples">💡</a> <a href="#maintenance-myConsciousness" title="Maintenance">🚧</a> <a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=myConsciousness" title="Tests">⚠️</a> <a href="#tutorial-myConsciousness" title="Tutorials">✅</a></td>
+      <td align="center"><a href="http://markos.dev"><img src="https://avatars.githubusercontent.com/u/6950843?v=4?s=100" width="100px;" alt="Mark O'Sullivan"/><br /><sub><b>Mark O'Sullivan</b></sub></a><br /><a href="#ideas-MarkOSullivan94" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="http://abrah.am"><img src="https://avatars.githubusercontent.com/u/3341?v=4?s=100" width="100px;" alt="Abraham Williams"/><br /><sub><b>Abraham Williams</b></sub></a><br /><a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=abraham" title="Code">💻</a><a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=abraham" title="Documentation">📖</a><a href="https://github.com/mastodon-dart/mastodon-oauth2/commits?author=abraham" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
 </table>
